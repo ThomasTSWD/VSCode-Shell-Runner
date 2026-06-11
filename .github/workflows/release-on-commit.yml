@@ -1,0 +1,72 @@
+# .github/workflows/release-on-commit.yml
+# Allow Read / Write Settings > Actions
+# Commit with v.x.x.x
+
+name: Release VSIX on Commit Message
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    if: startsWith(github.event.head_commit.message, 'v')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Extract version from commit message
+        id: extract_version
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          VERSION=$(echo "$COMMIT_MSG" | grep -o 'v[0-9]*\.[0-9]*\.[0-9]*')
+          if [ -z "$VERSION" ]; then
+            echo "No valid version found in commit message."
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update package.json version
+        env:
+          VERSION: ${{ steps.extract_version.outputs.VERSION }}
+        run: npm version "${VERSION#v}" --no-git-tag-version
+
+      - name: Package the extension
+        run: |
+          npm install -g @vscode/vsce
+          vsce package
+
+      - name: Get repository name
+        run: echo "REPO_NAME=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_ENV
+
+      - name: Rename VSIX file
+        id: rename_vsix
+        env:
+          VERSION: ${{ steps.extract_version.outputs.VERSION }}
+        run: |
+          OLD_VSIX=$(ls *.vsix)
+          NEW_VSIX="${REPO_NAME}-${VERSION}.vsix"
+          mv "$OLD_VSIX" "$NEW_VSIX"
+          echo "VSIX_FILE=$NEW_VSIX" >> $GITHUB_OUTPUT
+
+      - name: Create Release and upload VSIX
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.extract_version.outputs.VERSION }}
+          name: Release ${{ steps.extract_version.outputs.VERSION }}
+          files: ${{ steps.rename_vsix.outputs.VSIX_FILE }}

@@ -1,0 +1,54 @@
+{
+  "name": "shell-runner",
+  "displayName": "Shell Runner",
+  "description": "Run shell scripts directly from VS Code with a single click.",
+  "version": "0.0.1",
+  "author": "ThomasTSWD",
+  "publisher": "ThomasTSWD",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThomasTSWD/VsCode-shell-runner"
+  },
+  "icon": "images/icon.png",
+  "keywords": ["shell", "bash", "runner", "script"],
+  "engines": {
+    "vscode": "^1.120.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "shell-runner.runShell",
+        "title": "Run Shell Script",
+        "icon": "$(play)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "shell-runner.runShell",
+          "when": "resourceExtname == .sh",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.120.0",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.56.1",
+    "eslint": "^9.39.3",
+    "typescript": "^5.9.3"
+  }
+}
