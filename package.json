@@ -1,6 +1,6 @@
 {
   "name": "shell-runner",
-  "displayName": "Shell Runner",
+  "displayName": "VSCode Shell Runner",
   "description": "Run shell scripts directly from VS Code with a single click.",
   "version": "1.1.0",
   "author": "ThomasTSWD",
@@ -8,12 +8,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ThomasTSWD/VsCode-shell-runner"
+    "url": "https://github.com/ThomasTSWD/VSCode-Shell-Runner"
   },
   "bugs": {
-    "url": "https://github.com/ThomasTSWD/VsCode-shell-runner/issues"
+    "url": "https://github.com/ThomasTSWD/VSCode-Shell-Runner/issues"
   },
-  "homepage": "https://github.com/ThomasTSWD/VsCode-shell-runner#readme",
+  "homepage": "https://github.com/ThomasTSWD/VSCode-Shell-Runner#readme",
   "icon": "images/icon.png",
   "keywords": [
     "shell",

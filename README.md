@@ -1,6 +1,6 @@
-# Shell Runner
+# VSCode Shell Runner
 
-[![Release](https://img.shields.io/github/v/release/ThomasTSWD/VsCode-shell-runner)](https://github.com/ThomasTSWD/VsCode-shell-runner/releases/latest)
+[![Release](https://img.shields.io/github/v/release/ThomasTSWD/VSCode-Shell-Runner)](https://github.com/ThomasTSWD/VSCode-Shell-Runner/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Run shell scripts from VS Code with a single click.
@@ -14,7 +14,7 @@ Run shell scripts from VS Code with a single click.
 
 ## Installation
 
-1. Download the latest `.vsix` from the [Releases](https://github.com/ThomasTSWD/VsCode-shell-runner/releases/latest) page
+1. Download the latest `.vsix` from the [Releases](https://github.com/ThomasTSWD/VSCode-Shell-Runner/releases/latest) page
 2. In VS Code, run **Extensions: Install from VSIX...** and select the file
 
 ## Usage
