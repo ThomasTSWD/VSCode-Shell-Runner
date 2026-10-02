@@ -1,40 +1,34 @@
 # Shell Runner
 
-> Run your shell scripts directly from VS Code with a single click.
+[![Release](https://img.shields.io/github/v/release/ThomasTSWD/VsCode-shell-runner)](https://github.com/ThomasTSWD/VsCode-shell-runner/releases/latest)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
----
+Run shell scripts from VS Code with a single click.
 
 ## Features
 
-- **Play button in the editor toolbar** — a `▶` button appears automatically in the title bar when you open a `.sh` file
-- **Runs in the integrated terminal** — the script executes in the VS Code terminal, you see the output in real time
-- **No configuration required** — works out of the box
+- A **▶** button in the editor title bar for every `.sh` file
+- Runs the script with `bash` in a dedicated terminal, from the script's folder
+- Saves unsaved changes before running
+- No configuration required
 
----
+## Installation
+
+1. Download the latest `.vsix` from the [Releases](https://github.com/ThomasTSWD/VsCode-shell-runner/releases/latest) page
+2. In VS Code, run **Extensions: Install from VSIX...** and select the file
 
 ## Usage
 
-1. Open a `.sh` file in VS Code
-2. Click the **▶** button in the editor title bar
-3. The terminal opens and runs the script
-
----
+Open a `.sh` file and click **▶** in the editor title bar, or run **Shell Runner: Run Shell Script** from the Command Palette.
 
 ## Requirements
 
-- `bash` must be available on your system (Linux / macOS natively, Windows via WSL or Git Bash)
+`bash` must be on your `PATH` (native on Linux and macOS, Git Bash on Windows). The extension is disabled in Restricted Mode.
 
----
+## Changelog
 
-## Release Notes
+See [CHANGELOG.md](CHANGELOG.md).
 
-### 0.0.1
+## License
 
-- Initial release: play button for `.sh` files, execution via `bash` in the integrated terminal
-
----
-
-## Built with
-
-- [TypeScript](https://www.typescriptlang.org/)
-- [VS Code Extension API](https://code.visualstudio.com/api)
+[MIT](LICENSE)
