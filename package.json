@@ -2,7 +2,7 @@
   "name": "shell-runner",
   "displayName": "Shell Runner",
   "description": "Run shell scripts directly from VS Code with a single click.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "ThomasTSWD",
   "publisher": "ThomasTSWD",
   "license": "MIT",
@@ -10,14 +10,30 @@
     "type": "git",
     "url": "https://github.com/ThomasTSWD/VsCode-shell-runner"
   },
+  "bugs": {
+    "url": "https://github.com/ThomasTSWD/VsCode-shell-runner/issues"
+  },
+  "homepage": "https://github.com/ThomasTSWD/VsCode-shell-runner#readme",
   "icon": "images/icon.png",
-  "keywords": ["shell", "bash", "runner", "script"],
+  "keywords": [
+    "shell",
+    "bash",
+    "runner",
+    "script"
+  ],
   "engines": {
     "vscode": "^1.120.0"
   },
   "categories": [
     "Other"
   ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "Shell Runner executes scripts, so it is disabled in Restricted Mode."
+    },
+    "virtualWorkspaces": false
+  },
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
@@ -25,6 +41,7 @@
       {
         "command": "shell-runner.runShell",
         "title": "Run Shell Script",
+        "category": "Shell Runner",
         "icon": "$(play)"
       }
     ],
@@ -35,6 +52,12 @@
           "when": "resourceExtname == .sh",
           "group": "navigation"
         }
+      ],
+      "commandPalette": [
+        {
+          "command": "shell-runner.runShell",
+          "when": "resourceExtname == .sh"
+        }
       ]
     }
   },
@@ -42,13 +65,15 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "package": "vsce package"
   },
   "devDependencies": {
-    "@types/vscode": "^1.120.0",
     "@types/node": "22.x",
-    "typescript-eslint": "^8.56.1",
+    "@types/vscode": "^1.120.0",
+    "@vscode/vsce": "^4.0.0",
     "eslint": "^9.39.3",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
   }
 }
