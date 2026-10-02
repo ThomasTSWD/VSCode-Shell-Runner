@@ -2,7 +2,7 @@
   "name": "shell-runner",
   "displayName": "VSCode Shell Runner",
   "description": "Run shell scripts directly from VS Code with a single click.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "ThomasTSWD",
   "publisher": "ThomasTSWD",
   "license": "MIT",
