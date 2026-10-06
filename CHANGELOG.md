@@ -3,6 +3,18 @@
 All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.1.3] - 2026-10-06
+
+### Changed
+
+- Updated the development toolchain to its latest versions (TypeScript 7, and the VS Code typings)
+- Requires VS Code 1.140 or later, and the Node typings and the release build now target Node 24, the version VS Code 1.140 runs
+- Updated the GitHub Actions of the release workflow
+
+### Removed
+
+- ESLint and the lint step of the release workflow, TypeScript strict mode and the tests are the checks
+
 ## [1.1.2] - 2026-10-03
 
 ### Changed
